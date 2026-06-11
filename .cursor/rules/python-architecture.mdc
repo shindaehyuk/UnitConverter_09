@@ -1,0 +1,45 @@
+---
+description: Unit Converter Python 아키텍처·SRP/OCP 규칙
+globs: "**/*.py"
+alwaysApply: false
+---
+
+# Python 아키텍처
+
+## 모듈 경계 (SRP)
+
+| 모듈 | 책임 |
+|------|------|
+| `parser.py` | `unit:value` 파싱·검증만 |
+| `registry.py` | 단위·비율 로드·등록만 |
+| `converter.py` | meter 경유 변환 계산만 |
+| `formatter.py` | table/json/csv 출력만 |
+| `__main__.py` | CLI 조립·I/O만 |
+
+`main()`과 진입점은 조립만 한다. 비즈니스 로직을 넣지 않는다.
+
+## OCP
+
+새 단위 추가 시 `registry` 확장만으로 동작해야 한다. `converter`의 `if/elif` 단위 분기를 추가하지 않는다.
+
+## DRY
+
+변환 계수는 `UnitRegistry` 또는 `config/units.json` 한 곳에서만 정의한다.
+
+## 에러 메시지 (RGIO I 계약)
+
+```python
+# 형식: "Invalid format. Use unit:value (ex: meter:2.5)"
+# 숫자: f"Invalid number: {value_str}"
+# 음수: f"Negative value not allowed: {value}"
+# 단위: f"Unknown unit: {unit}"
+```
+
+## 출력 (R-11, R-12)
+
+입력 단위를 제외한 나머지 단위만 출력. 소수 1자리 반올림.
+
+```text
+2.5 meter = 8.2 feet
+2.5 meter = 2.7 yard
+```

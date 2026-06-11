@@ -1,0 +1,38 @@
+---
+description: Unit Converter pytest·TC·RTM 규칙
+globs: "tests/**/*.py"
+alwaysApply: false
+---
+
+# 테스트 규칙
+
+## 프레임워크
+
+pytest 사용. `tests/test_parser.py`, `test_converter.py`, `test_formatter.py`로 모듈별 분리.
+
+## TC ID 매핑
+
+`docs/analysis/rgio.md` O 섹션의 TC-01~TC-14와 1:1 대응. 테스트 함수명에 TC ID 포함:
+
+```python
+def test_tc01_meter_to_feet_and_yard():
+    ...
+
+def test_tc04_negative_value_rejected():
+    ...
+```
+
+## 검증 범위
+
+- P0 (TC-01~10): 변환 정확성, 입력 검증, meter 경유, OCP(registry 확장)
+- P1 (TC-11~14): 설정 로드, 동적 등록, json/csv 포맷
+
+## RTM 갱신
+
+테스트 통과 후 `docs/analysis/rgio.md` RTM 표의 상태를 `미구현` → `완료`로 갱신한다.
+
+## 실행
+
+```bash
+python -m pytest tests/ -v
+```

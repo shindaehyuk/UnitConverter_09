@@ -1,0 +1,33 @@
+---
+description: Unit Converter 프로젝트 컨텍스트·Activity 흐름·정책
+alwaysApply: true
+---
+
+# Unit Converter 프로젝트
+
+Python 길이 단위 변환기. PRD는 `README.md`, 실행 계획은 `docs/analysis/rgio.md`, 갭 분석은 `docs/analysis/project-analysis.md`를 기준으로 한다.
+
+## Activity 순서
+
+1. Activity 1 — 분석 (완료): `docs/analysis/` 문서
+2. Activity 2 — P0 구현: R-01~R-12, SRP/OCP 모듈 분리
+3. Activity 3 — TC: TC-01~TC-10, RTM 갱신
+4. Activity 4 — P1: R-13~R-15 (설정·동적 등록·출력 포맷)
+
+## 확정 정책
+
+- 음수 입력 → 에러 거부
+- 출력 → 입력 단위 제외, 소수 1자리 반올림
+- 변환 → meter 단일 기준 (feet↔yard 직접 환산 금지)
+- 변환 계수: 1m = 3.28084ft, 1m = 1.09361yd
+
+## 목표 구조
+
+```
+unit_converter/   # parser, registry, converter, formatter, __main__
+config/           # units.json (P1)
+tests/            # pytest
+UnitConverter.py  # 기존 진입점 유지 또는 위임
+```
+
+구현 전 `docs/analysis/rgio.md`의 해당 요구사항 ID를 확인한다.

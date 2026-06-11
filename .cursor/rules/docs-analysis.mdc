@@ -1,0 +1,25 @@
+---
+description: docs/analysis 분석 문서 작성 규칙
+globs: "docs/**/*.md"
+alwaysApply: false
+---
+
+# 분석 문서 규칙
+
+## 문서 역할
+
+| 파일 | 역할 |
+|------|------|
+| `project-analysis.md` | 레거시 스멜·PRD 갭 (현재 상태 스냅샷) |
+| `rgio.md` | R/G/I/O 실행 계획·RTM·DoD |
+
+## 작성 원칙
+
+- PRD(`README.md`)와 구현(`UnitConverter.py` 또는 `unit_converter/`)을 대조해 작성
+- 요구사항은 ID 체계 유지: R-01~, G-01~, TC-01~
+- 상태 표기: ✅ 구현 / ⚠️ 부분 / ❌ 미구현
+- 분석 문서는 `docs/analysis/`에만 저장
+
+## RGIO 갱신 시
+
+구현·테스트 완료 후 RTM과 DoD 체크박스를 함께 갱신한다.
