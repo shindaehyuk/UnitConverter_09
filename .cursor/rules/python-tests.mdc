@@ -47,6 +47,17 @@ def test_tc04_negative_value_rejected():
 - P0 (TC-01~10): 변환 정확성, 입력 검증, meter 경유, OCP(registry 확장)
 - P1 (TC-11~14): 설정 로드, 동적 등록, json/csv 포맷
 
+## P1 RED (TC-11~14)
+
+| TC | 파일 | 검증 |
+|----|------|------|
+| TC-11 | `test_registry_config.py` | `UnitRegistry.from_config()` |
+| TC-12 | `test_registry_register.py` | `register_from_expression()` |
+| TC-13 | `test_formatter.py` | `fmt="json"` |
+| TC-14 | `test_formatter.py` | `fmt="csv"` |
+
+P1 RED: 위 4건 failed · 스텁만 · P1 GREEN 전 구현 금지
+
 ## RTM 갱신
 
 테스트 통과 후 `docs/analysis/rgio.md` RTM 표의 상태를 `미구현` → `완료`로 갱신한다.
