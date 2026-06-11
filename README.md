@@ -27,6 +27,10 @@ deactivate
 pip install -e ".[dev]"
 ```
 
+### 단계별 REPORT
+
+진행 보고서: [`docs/reports/README.md`](docs/reports/README.md)
+
 ### 테스트 · 커버리지
 
 상세 명령어: [`docs/testing.md`](docs/testing.md)

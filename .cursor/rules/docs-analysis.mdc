@@ -12,6 +12,7 @@ alwaysApply: false
 |------|------|
 | `project-analysis.md` | 레거시 스멜·PRD 갭 (현재 상태 스냅샷) |
 | `rgio.md` | R/G/I/O 실행 계획·RTM·DoD |
+| `docs/reports/` | 단계별 REPORT 보고서 |
 
 ## 작성 원칙
 
