@@ -22,6 +22,25 @@ python UnitConverter.py
 
 # 가상환경 비활성화
 deactivate
+
+# (선택) dev 의존성 — 테스트·커버리지
+pip install -e ".[dev]"
+```
+
+### 테스트 · 커버리지
+
+상세 명령어: [`docs/testing.md`](docs/testing.md)
+
+```bash
+# 전체 테스트
+python -m pytest tests/ -v
+
+# 커버리지 (터미널)
+python -m pytest tests/ --cov=unit_converter --cov-report=term-missing -v
+
+# 커버리지 (HTML → htmlcov/index.html)
+python -m pytest tests/ --cov=unit_converter --cov-report=html:htmlcov --cov-report=term-missing -v
+start htmlcov/index.html
 ```
 
 ### 기본 요구사항
