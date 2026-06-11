@@ -11,6 +11,35 @@ description: RGIO 기반 Unit Converter 구현 워크플로. Activity 2~4 단계
 2. `docs/analysis/project-analysis.md` — 해소할 스멜·갭
 3. `README.md` — PRD 원문
 
+## TDD GREEN 단계 (P0 묶음: TC-01~TC-10)
+
+### 사전: RED 재확인
+
+```bash
+python -m pytest tests/ -v
+# 대상 TC 전부 FAILED 확인 (0 passed)
+```
+
+### GREEN 구현 순서 (최소)
+
+1. `registry.py` — `register`, `get_ratio` (비율은 `DEFAULT_UNITS`만)
+2. `parser.py` — 파싱·검증 (RGIO 에러 메시지 exact)
+3. `converter.py` — `registry.get_ratio()` 경유 meter 변환, 입력 단위 제외
+4. `formatter.py` — table, `DECIMAL_PLACES = 1`
+
+### GREEN 금지 사항
+
+- 이번 묶음(TC-01~10) 외 P1(TC-11~14) 동시 구현
+- REFACTOR (`__main__.py`, `config/units.json` 등)
+- assert 완화·`pytest.fail`/`skip` 사용
+- converter/formatter에 변환 계수 리터럴 하드코딩
+
+### GREEN 완료 보고 형식
+
+- PASS Test ID 목록
+- 변경 파일 목록
+- `docs/analysis/rgio.md` RTM·DoD 갱신
+
 ## Activity 2 (P0: R-01~R-12)
 
 ### 디렉터리 생성

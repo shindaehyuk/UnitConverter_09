@@ -6,6 +6,26 @@ alwaysApply: false
 
 # 테스트 규칙
 
+## TDD 사이클 (RED → GREEN → REFACTOR)
+
+### RED
+
+- 구현은 `NotImplementedError` 스텁만. **pass 금지**.
+- 테스트는 실제 `assert` / `pytest.raises`만 사용 (`pytest.fail`·`skip` 금지).
+- 에러 메시지는 RGIO I 계약 exact assert.
+
+### GREEN
+
+1. RED 재확인: 대상 TC 전부 failed 확인
+2. **함수 최소 구현** — 현재 RED 묶음 TC만 통과시키는 코드
+3. **금지**: 이번 묶음 외 ID 동시 해결, REFACTOR, assert 완화
+4. **금지**: 하드코딩·매직넘버 — 변환 계수는 `UnitRegistry` 단일 정의만 참조
+5. PASS 확인 후 보고: PASS Test ID · 변경 파일 · 회귀 시 즉시 수정
+
+### REFACTOR
+
+- GREEN PASS 이후 별도 요청 시에만 진행. GREEN 단계에서 구조 개선 금지.
+
 ## 프레임워크
 
 pytest 사용. `tests/test_parser.py`, `test_converter.py`, `test_formatter.py`로 모듈별 분리.

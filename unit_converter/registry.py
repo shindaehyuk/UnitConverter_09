@@ -9,10 +9,10 @@ class UnitRegistry:
         self._units = dict(units or self.DEFAULT_UNITS)
 
     def register(self, name: str, meter_ratio: float) -> None:
-        raise NotImplementedError
+        self._units[name] = meter_ratio
 
     def get_ratio(self, name: str) -> float:
-        raise NotImplementedError
+        return self._units[name]
 
     def list_units(self) -> list[str]:
         return list(self._units.keys())
