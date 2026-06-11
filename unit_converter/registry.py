@@ -8,7 +8,14 @@ class UnitRegistry:
     def __init__(self, units: dict[str, float] | None = None) -> None:
         self._units = dict(units or self.DEFAULT_UNITS)
 
+    @classmethod
+    def from_config(cls, config_path: str) -> "UnitRegistry":
+        raise NotImplementedError
+
     def register(self, name: str, meter_ratio: float) -> None:
+        raise NotImplementedError
+
+    def register_from_expression(self, expression: str) -> None:
         raise NotImplementedError
 
     def get_ratio(self, name: str) -> float:

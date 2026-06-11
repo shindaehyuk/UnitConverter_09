@@ -263,8 +263,26 @@ UnitConverter_09/
 
 ---
 
+## TDD 진행 상태
+
+| 단계 | P0 (TC-01~10) | P1 (TC-11~14) |
+|------|---------------|---------------|
+| RED | 완료 | 완료 (2026-06-11) |
+| GREEN | — | — |
+
+## P1 RED 산출물 (2026-06-11)
+
+| TC | 테스트 파일 | 스텁 |
+|----|------------|------|
+| TC-11 | `tests/test_registry_config.py` | `UnitRegistry.from_config()` |
+| TC-12 | `tests/test_registry_register.py` | `register_from_expression()` |
+| TC-13 | `tests/test_formatter.py` | `fmt="json"` |
+| TC-14 | `tests/test_formatter.py` | `fmt="csv"` |
+
+설정: `config/units.json`
+
 ## 다음 단계
 
-1. **Activity 2** — P0 요구사항(R-01~R-12) 구현, 모듈 구조 생성
-2. **Activity 3** — TC-01~TC-10 작성, RTM 갱신
-3. **Activity 4** — P1 요구사항(R-13~R-15) 구현, TC-11~TC-14 추가
+1. **P0 GREEN** — TC-01~10 (이전 GREEN 복원 필요 시)
+2. **P1 GREEN** — TC-11~14, R-13~R-15 (Activity 4)
+3. **REFACTOR** — `__main__.py`, `UnitConverter.py` 위임
