@@ -240,9 +240,9 @@ UnitConverter_09/
 | R-10 | — (구조 리뷰) | 완료 |
 | R-11 | TC-08 | 완료 |
 | R-12 | TC-01 | 완료 |
-| R-13 | TC-11 | 미구현 |
-| R-14 | TC-12 | 미구현 |
-| R-15 | TC-13, TC-14 | 미구현 |
+| R-13 | TC-11 | 완료 |
+| R-14 | TC-12 | 완료 |
+| R-15 | TC-13, TC-14 | 완료 |
 
 ### Definition of Done
 
@@ -256,10 +256,10 @@ UnitConverter_09/
 
 **P1 완료 (Activity 4)**
 
-- [ ] `config/units.json` 외부 설정 로드 (R-13)
-- [ ] 동적 단위 등록 CLI 동작 (R-14)
-- [ ] JSON / CSV / table 출력 선택 (R-15)
-- [ ] TC-11 ~ TC-14 전부 통과
+- [x] `config/units.json` 외부 설정 로드 (R-13)
+- [ ] 동적 단위 등록 CLI 동작 (R-14) — API 완료, `__main__.py` REFACTOR 대기
+- [ ] JSON / CSV / table 출력 선택 (R-15) — formatter 완료, CLI REFACTOR 대기
+- [x] TC-11 ~ TC-14 전부 통과
 
 ---
 
@@ -268,10 +268,16 @@ UnitConverter_09/
 | 단계 | P0 (TC-01~10) | P1 (TC-11~14) |
 |------|---------------|---------------|
 | RED | 완료 | 완료 (2026-06-11) |
-| GREEN | 완료 (2026-06-11) | — |
+| GREEN | 완료 (2026-06-11) | 완료 (2026-06-11) |
 | REFACTOR | 대기 (별도 요청) | — |
 
 상세 절차: `docs/analysis/tdd-workflow.md`
+
+## P1 GREEN 완료 (2026-06-11)
+
+- PASS: TC-11, TC-12, TC-13, TC-14
+- 변경: `unit_converter/registry.py`, `unit_converter/formatter.py`
+- 회귀: 없음 (17 passed)
 
 ## P1 RED 산출물 (2026-06-11)
 
@@ -286,5 +292,4 @@ UnitConverter_09/
 
 ## 다음 단계
 
-1. **P1 GREEN** — TC-11~14, R-13~R-15 (Activity 4)
-2. **REFACTOR** (선택) — `__main__.py`, `UnitConverter.py` 위임
+1. **REFACTOR** (선택) — `__main__.py`, `UnitConverter.py` 위임, CLI `--register` / `--format`
